@@ -40,27 +40,37 @@
 
   var menuButton = document.getElementById('nav-menu-toggle');
   var menu = document.getElementById('et-nav-links');
-  function closeMenu() {
+  var backdrop = null;
+  function setMenu(open) {
     if (!menuButton || !menu) return;
-    menuButton.setAttribute('aria-expanded', 'false');
-    menuButton.setAttribute('aria-label', 'Open navigation');
-    menu.classList.remove('is-open');
+    menuButton.setAttribute('aria-expanded', String(open));
+    menuButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+    menu.classList.toggle('is-open', open);
+    if (backdrop) backdrop.classList.toggle('is-open', open);
+    root.classList.toggle('nav-open', open);
+  }
+  function closeMenu(returnFocus) {
+    var wasOpen = menu && menu.classList.contains('is-open');
+    setMenu(false);
+    if (wasOpen && returnFocus && menuButton) menuButton.focus();
   }
   if (menuButton && menu) {
+    // Dimmed backdrop lives inside the nav so it stacks under the drawer but over the page.
+    backdrop = document.createElement('div');
+    backdrop.className = 'nav-backdrop';
+    backdrop.setAttribute('aria-hidden', 'true');
+    menuButton.parentNode.parentNode.insertBefore(backdrop, menuButton.parentNode);
+    backdrop.addEventListener('click', function () { closeMenu(true); });
+
     menuButton.addEventListener('click', function () {
       var open = menuButton.getAttribute('aria-expanded') !== 'true';
-      menuButton.setAttribute('aria-expanded', String(open));
-      menuButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
-      menu.classList.toggle('is-open', open);
+      setMenu(open);
+      if (open) { var first = menu.querySelector('a, button'); if (first) setTimeout(function () { first.focus({ preventScroll: true }); }, 60); }
     });
     menu.addEventListener('click', function (event) {
-      if (event.target.closest && event.target.closest('a')) closeMenu();
+      if (event.target.closest && event.target.closest('a')) closeMenu(false);
     });
-    document.addEventListener('keydown', function (event) { if (event.key === 'Escape') closeMenu(); });
-    document.addEventListener('click', function (event) {
-      if (!menu.contains(event.target) && !menuButton.contains(event.target)) closeMenu();
-    });
-    window.addEventListener('resize', function () { if (window.innerWidth > 900) closeMenu(); });
+    document.addEventListener('keydown', function (event) { if (event.key === 'Escape') closeMenu(true); });
   }
 
   // Reveal elements on entry and stagger cards. The observer also watches content inserted by the tracker.
