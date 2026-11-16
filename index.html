@@ -29,12 +29,12 @@
         <h1>Don’t bin it yet. <em>Check it, fix it, reuse it,</em> then recycle it.</h1>
         <p class="home-lede">EcoTekk walks you through what to try before you replace a device, who nearby can repair it, and where to take it when it really is done.</p>
 
-        <form class="quickstart" id="quickstart" aria-label="Quick start">
+        <form class="quickstart" id="quickstart" aria-label="Quick start" novalidate>
           <p class="qs-label">Start here</p>
           <div class="qs-sentence">
-            <label for="qs-device">My</label>
-            <select id="qs-device" required><option value="">pick a device</option><option value="Phone">Phone</option><option value="Laptop / computer">Laptop / computer</option><option value="Tablet">Tablet</option><option value="Smartwatch">Smartwatch / fitness band</option><option value="TV / monitor">TV / monitor</option><option value="Printer">Printer</option><option value="Router">Router / modem</option><option value="Game console">Game console</option><option value="Camera">Camera</option><option value="Audio device">Audio device / speaker</option><option value="Cables / chargers">Cables / chargers</option><option value="Batteries">Batteries</option></select>
-            <select id="qs-category" required aria-label="What is happening"><option value="">what’s wrong?</option><option value="power">won’t turn on</option><option value="screen">has a screen problem</option><option value="software">has a software problem</option><option value="performance">is running slow</option><option value="connectivity">won’t connect</option><option value="charging">won’t charge properly</option><option value="reuse">is at the end of its life</option><option value="accessories">needs a cable or accessory</option></select>
+            <span class="qs-my" id="qs-my">My</span>
+            <select id="qs-device" required><option value="">device</option><option value="Phone">Phone</option><option value="Laptop / computer">Laptop / computer</option><option value="Tablet">Tablet</option><option value="Smartwatch">Smartwatch / fitness band</option><option value="TV / monitor">TV / monitor</option><option value="Printer">Printer</option><option value="Router">Router / modem</option><option value="Game console">Game console</option><option value="Camera">Camera</option><option value="Audio device">Audio device / speaker</option><option value="Cables / chargers">Cables / chargers</option><option value="Batteries">Batteries</option></select>
+            <select id="qs-category" required aria-label="What is the problem"><option value="">has a problem</option><option value="power">has a power problem</option><option value="screen">has a screen problem</option><option value="software">has a software problem</option><option value="performance">has a slow-performance problem</option><option value="connectivity">has a connectivity problem</option><option value="charging">has a charging or battery problem</option><option value="accessories">has a cable or accessory problem</option><option value="reuse">has reached the end of its life</option></select>
           </div>
           <div class="qs-actions">
             <button class="et-btn" type="submit">Show me what to try <span aria-hidden="true">→</span></button>
@@ -52,11 +52,11 @@
       <path class="loop-arc" d="M284.7 234.5 A118 118 0 0 1 234.5 284.7" marker-end="url(#arrow)"/>
       <path class="loop-arc" d="M125.5 284.7 A118 118 0 0 1 75.3 234.5" marker-end="url(#arrow)"/>
       <path class="loop-arc" d="M75.3 125.5 A118 118 0 0 1 125.5 75.3" marker-end="url(#arrow)"/>
-      <a href="explore.html" class="loop-node" aria-label="Check"><circle cx="180.0" cy="62.0" r="42"/><text x="180.0" y="54.0" class="loop-num">01</text><text x="180.0" y="73.0" class="loop-label">Check</text></a>
-      <a href="techhelp.html" class="loop-node" aria-label="Fix"><circle cx="298.0" cy="180.0" r="42"/><text x="298.0" y="172.0" class="loop-num">02</text><text x="298.0" y="191.0" class="loop-label">Fix</text></a>
-      <a href="explore.html?category=reuse" class="loop-node" aria-label="Reuse"><circle cx="180.0" cy="298.0" r="42"/><text x="180.0" y="290.0" class="loop-num">03</text><text x="180.0" y="309.0" class="loop-label">Reuse</text></a>
-      <a href="home.html" class="loop-node" aria-label="Recycle"><circle cx="62.0" cy="180.0" r="42"/><text x="62.0" y="172.0" class="loop-num">04</text><text x="62.0" y="191.0" class="loop-label">Recycle</text></a>
-      <text x="180" y="172" class="loop-center">keep it</text><text x="180" y="192" class="loop-center strong">in the loop</text>
+      <a href="explore.html" class="loop-node" aria-label="Check"><circle class="loop-ripple" cx="180.0" cy="62.0" r="42"/><circle cx="180.0" cy="62.0" r="42"/><text x="180.0" y="54.0" class="loop-num">01</text><text x="180.0" y="73.0" class="loop-label">Check</text></a>
+      <a href="techhelp.html" class="loop-node" aria-label="Fix"><circle class="loop-ripple" cx="298.0" cy="180.0" r="42"/><circle cx="298.0" cy="180.0" r="42"/><text x="298.0" y="172.0" class="loop-num">02</text><text x="298.0" y="191.0" class="loop-label">Fix</text></a>
+      <a href="explore.html?category=reuse" class="loop-node" aria-label="Reuse"><circle class="loop-ripple" cx="180.0" cy="298.0" r="42"/><circle cx="180.0" cy="298.0" r="42"/><text x="180.0" y="290.0" class="loop-num">03</text><text x="180.0" y="309.0" class="loop-label">Reuse</text></a>
+      <a href="home.html" class="loop-node" aria-label="Recycle"><circle class="loop-ripple" cx="62.0" cy="180.0" r="42"/><circle cx="62.0" cy="180.0" r="42"/><text x="62.0" y="172.0" class="loop-num">04</text><text x="62.0" y="191.0" class="loop-label">Recycle</text></a>
+      <circle class="loop-dot" r="4.5"/><circle class="loop-dot trail" r="3"/><text x="180" y="172" class="loop-center">keep it</text><text x="180" y="192" class="loop-center strong">in the loop</text>
     </svg>
         <p class="loop-caption">Tap a step to jump straight to it.</p>
       </div>
@@ -117,17 +117,13 @@
 <script src="firebase-config.js" defer></script>
 <script src="auth.js" defer></script>
 <script src="experience.js" defer></script>
+<script src="index.js" defer></script>
 <script>
 document.addEventListener('DOMContentLoaded',function(){
   /* Hide the guest card once someone is signed in. */
   if(window.EcotekkAuth)EcotekkAuth.ready.then(function(){if(EcotekkAuth.currentUser()){var g=document.getElementById('guest-strip');if(g)g.style.display='none';}}).catch(function(){});
   var b=document.getElementById('guestStart'),m=document.getElementById('guestMsg');
   if(b)b.addEventListener('click',async function(){b.disabled=true;m.textContent='Starting guest session…';try{await EcotekkAuth.guestLogin();location.href='explore.html';}catch(e){b.disabled=false;m.textContent=(e&&(e.code==='auth/operation-not-allowed'||e.code==='auth/admin-restricted-operation'))?'Guest access is not switched on yet. Enable Anonymous sign-in in Firebase Authentication.':'Could not start a guest session. Please try again.';}});
-  /* Quick start: send the chosen device + problem straight to the explorer (it accepts both as URL parameters). */
-  var f=document.getElementById('quickstart');
-  if(f)f.addEventListener('submit',function(e){e.preventDefault();var d=document.getElementById('qs-device').value,c=document.getElementById('qs-category').value,msg=document.getElementById('qs-msg');
-    if(!d||!c){msg.textContent=!d&&!c?'Pick a device and what’s wrong first.':!d?'Pick a device first.':'Tell us what’s wrong first.';return;}
-    location.href='explore.html?'+new URLSearchParams({category:c,device:d}).toString();});
 });
 </script>
 </body></html>
